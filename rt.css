@@ -30,7 +30,11 @@
   gap: 1rem;
   padding: 1rem;
   max-width: 100%;
-  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
@@ -68,10 +72,17 @@
     grid-template-columns: 1fr;
     place-items: center;
     padding: 1.5rem 1rem;
+    width: 100%;
   }
   
   .rt-wheel-container {
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .rt-wheel-wrap {
+    max-width: 100%;
   }
   
   .rt-prize-note {
@@ -703,7 +714,7 @@
 }
 
 @media (max-width: 480px) {
-  :root { --rt-wheel-size: 280px; } /* Reducido para pantallas muy pequeñas */
+  :root { --rt-wheel-size: min(280px, calc(100vw - 2rem)); } /* Se adapta al ancho de la pantalla */
   .rt-hero-title {
     font-size: 1.35rem;
   }
@@ -711,7 +722,12 @@
     font-size: 1.2rem;
   }
   .rt-hero {
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.75rem;
+  }
+  
+  .rt-wheel-wrap {
+    width: var(--rt-wheel-size);
+    height: var(--rt-wheel-size);
   }
 }
 
