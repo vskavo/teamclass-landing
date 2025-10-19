@@ -29,6 +29,8 @@
   display: grid;
   gap: 1rem;
   padding: 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (min-width: 900px) {
@@ -49,11 +51,23 @@
   padding: 2rem 15rem;
 }
 
+@media (max-width: 1400px) {
+  .rt-hero {
+    padding: 2rem 5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .rt-hero {
+    padding: 2rem 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .rt-hero {
     grid-template-columns: 1fr;
     place-items: center;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
   
   .rt-wheel-container {
@@ -689,12 +703,15 @@
 }
 
 @media (max-width: 480px) {
-  :root { --rt-wheel-size: 320px; } /* Aumentado de 260px a 320px en mobile */
+  :root { --rt-wheel-size: 280px; } /* Reducido para pantallas muy pequeñas */
   .rt-hero-title {
     font-size: 1.35rem;
   }
   .rt-hero-title-cta {
     font-size: 1.2rem;
+  }
+  .rt-hero {
+    padding: 1rem 0.5rem;
   }
 }
 
