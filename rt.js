@@ -19,21 +19,72 @@
   ];
 
   /**
-   * Cursos de ejemplo. Reemplazar con contenido real (12–15 items)
+   * Líneas de cursos TeamClass
    */
   const coursesData = [
-    { id: "c1", name: "Liderazgo Ágil", image: "https://via.placeholder.com/480x320?text=Liderazgo", description: "Herramientas para liderar equipos adaptativos." },
-    { id: "c2", name: "Comunicación Asertiva", image: "https://via.placeholder.com/480x320?text=Comunicacion", description: "Mejora la interacción y los acuerdos internos." },
-    { id: "c3", name: "Trabajo en Equipo", image: "https://via.placeholder.com/480x320?text=Teamwork", description: "Fortalece la colaboración entre áreas." },
-    { id: "c4", name: "Gestión del Cambio", image: "https://via.placeholder.com/480x320?text=Cambio", description: "Acompaña transformaciones de negocio." },
-    { id: "c5", name: "Resolución de Conflictos", image: "https://via.placeholder.com/480x320?text=Conflictos", description: "Metodologías para acuerdos efectivos." },
-    { id: "c6", name: "Creatividad e Innovación", image: "https://via.placeholder.com/480x320?text=Innovacion", description: "Fomenta ideas y mejora continua." },
-    { id: "c7", name: "Gestión del Tiempo", image: "https://via.placeholder.com/480x320?text=Tiempo", description: "Planifica con foco y priorización." },
-    { id: "c8", name: "Atención al Cliente", image: "https://via.placeholder.com/480x320?text=Cliente", description: "Experiencias memorables y fidelización." },
-    { id: "c9", name: "Negociación Efectiva", image: "https://via.placeholder.com/480x320?text=Negociacion", description: "Crea valor y cierra acuerdos." },
-    { id: "c10", name: "Excel para Negocios", image: "https://via.placeholder.com/480x320?text=Excel", description: "Análisis y reporting práctico." },
-    { id: "c11", name: "Presentaciones Impactantes", image: "https://via.placeholder.com/480x320?text=Presentaciones", description: "Storytelling y visualización." },
-    { id: "c12", name: "Mindfulness Laboral", image: "https://via.placeholder.com/480x320?text=Mindfulness", description: "Bienestar y enfoque en el trabajo." }
+    { 
+      id: "c1", 
+      name: "Responsabilidad Social, Diversidad e Inclusión", 
+      image: "/wp-content/uploads/2025/10/Inclusion.jpg",
+      description: "Promueve culturas organizacionales más justas, conscientes y sostenibles, con foco en la gestión responsable y la inclusión laboral.",
+      example: "Programas de capacitación inclusivo"
+    },
+    { 
+      id: "c2", 
+      name: "Autocuidado y Bienestar Psicolaboral", 
+      image: "/wp-content/uploads/2025/10/Bienestar.jpg",
+      description: "Promueve el equilibrio emocional y la salud integral de los equipos, fomentando entornos laborales más humanos y sostenibles.",
+      example: "Taller de risoterapia"
+    },
+    { 
+      id: "c3", 
+      name: "Branding Corporativo", 
+      image: "/wp-content/uploads/2025/10/Branding.jpg",
+      description: "Potencia la identidad, reputación y comunicación de marca desde una mirada estratégica y coherente con los valores de la organización.",
+      example: "Uso de canva, presentaciones que cautivan"
+    },
+    { 
+      id: "c4", 
+      name: "Oficios", 
+      image: "/wp-content/uploads/2025/10/Oficios.jpg",
+      description: "Desarrolla competencias técnicas y operativas clave para distintos sectores productivos. Programa diseñado tanto para onboarding y proyectos sociales.",
+      example: "Técnicas de Electricidad Básica"
+    },
+    { 
+      id: "c5", 
+      name: "Power Skills", 
+      image: "/wp-content/uploads/2025/10/Power-skills.jpg",
+      description: "Fortalece las habilidades de tu equipo a la medida, impulsando el liderazgo, comunicación efectiva y el trabajo colaborativo dentro de los equipos.",
+      example: "Programa trabajo en equipo/ Outdoor"
+    },
+    { 
+      id: "c6", 
+      name: "Innovación y Tecnología", 
+      image: "/wp-content/uploads/2025/10/Tecnologia-e-innovacion.jpg",
+      description: "Fortalece las habilidades de tu equipo a la medida, impulsando el liderazgo, comunicación efectiva y el trabajo colaborativo dentro de los equipos.",
+      example: "Programa trabajo en equipo/ Outdoor"
+    },
+    { 
+      id: "c7", 
+      name: "Consultoría", 
+      image: "/wp-content/uploads/2025/10/Consultoria.jpg",
+      description: "Entrega herramientas estratégicas y metodológicas para analizar, diseñar e implementar soluciones efectivas para el desarrollo organizacional de tu empresa.",
+      example: "Elaboración de perfiles de cargo"
+    },
+    { 
+      id: "c8", 
+      name: "Idiomas", 
+      image: "/wp-content/uploads/2025/10/Idiomas.jpg",
+      description: "Teamclass en alianza con Busuu incorpora en sus programas formativos una metodología innovadora combinando clases vivenciales, inteligencia artificial y una plataforma que se adapta a tu medida.",
+      example: "Chino / Portugués / Inglés"
+    },
+    { 
+      id: "c9", 
+      name: "Formación en Normativas", 
+      image: "/wp-content/uploads/2025/10/Normativa.jpg",
+      description: "Fortalece el cumplimiento y la seguridad laboral con programas orientados a la normativa vigente y buenas prácticas organizacionales.",
+      example: "Buenas Prácticas de Manufactura (BPM)"
+    }
   ];
 
   const STORAGE = {
@@ -146,6 +197,9 @@
   function updatePrizeSummary(label) {
     els.summaryPrize.textContent = label || "—";
     els.prizeInput.value = label || "";
+    if (els.prizeBoxDisplay) {
+      els.prizeBoxDisplay.textContent = label || "—";
+    }
   }
 
   function updateCoursesSummary() {
@@ -157,6 +211,23 @@
       els.summaryCourses.appendChild(chip);
     });
     els.coursesInput.value = names.join(", ");
+    
+    // Update courses box in left column
+    if (els.coursesBoxList) {
+      els.coursesBoxList.innerHTML = "";
+      if (names.length === 0) {
+        const empty = el("p", "rt-courses-box-empty");
+        empty.textContent = "No has seleccionado ningún curso";
+        els.coursesBoxList.appendChild(empty);
+      } else {
+        names.forEach(name => {
+          const item = el("p", "rt-courses-box-item");
+          item.textContent = name;
+          els.coursesBoxList.appendChild(item);
+        });
+      }
+    }
+    
     try { localStorage.setItem(STORAGE.COURSES, JSON.stringify(names)); } catch (_) {}
   }
 
@@ -176,43 +247,163 @@
     track.innerHTML = "";
     coursesData.forEach(course => {
       const card = el("article", "rt-card");
+      
+      // Contenedor del título con botón +
+      const titleContainer = el("div", "rt-card-title-container");
+      
+      const title = el("div", "rt-card-title");
+      title.textContent = course.name;
+      
+      const addBtn = el("button", "rt-add-btn");
+      addBtn.type = "button";
+      addBtn.setAttribute("aria-label", `Agregar ${course.name}`);
+      addBtn.innerHTML = "+";
+      addBtn.dataset.courseName = course.name;
+      
+      // Actualizar estado visual si ya está seleccionado
+      if (state.selectedCourses.has(course.name)) {
+        addBtn.classList.add("rt-add-btn-selected");
+        addBtn.innerHTML = "✓";
+      }
+      
+      // Toggle selección
+      addBtn.addEventListener("click", () => {
+        const isSelected = state.selectedCourses.has(course.name);
+        if (isSelected) {
+          state.selectedCourses.delete(course.name);
+          addBtn.classList.remove("rt-add-btn-selected");
+          addBtn.innerHTML = "+";
+        } else {
+          state.selectedCourses.add(course.name);
+          addBtn.classList.add("rt-add-btn-selected");
+          addBtn.innerHTML = "✓";
+        }
+        updateCoursesSummary();
+      });
+      
+      titleContainer.append(title, addBtn);
+      
+      const imgContainer = el("div", "rt-card-img-container");
       const img = el("img");
       img.alt = course.name;
       img.loading = "lazy";
       img.src = course.image;
+      imgContainer.append(img);
+      
       const body = el("div", "rt-card-body");
-      const title = el("div", "rt-card-title");
-      title.textContent = course.name;
-      const desc = el("div", "rt-card-desc");
-      desc.textContent = course.description;
-      const actions = el("div", "rt-card-actions");
-      const label = el("label");
-      const check = el("input", "rt-check");
-      check.type = "checkbox";
-      check.name = "course";
-      check.value = course.name;
-      check.checked = state.selectedCourses.has(course.name);
-      label.append(check);
-      label.append(document.createTextNode(" Seleccionar"));
-      check.addEventListener("change", () => {
-        if (check.checked) state.selectedCourses.add(course.name);
-        else state.selectedCourses.delete(course.name);
-        updateCoursesSummary();
+      
+      // Botón Ver detalles
+      const detailsBtn = el("button", "rt-details-btn");
+      detailsBtn.type = "button";
+      detailsBtn.textContent = "Ver detalles";
+      
+      // Sección de detalles (oculta por defecto)
+      const detailsSection = el("div", "rt-details-section");
+      detailsSection.style.display = "none";
+      
+      const detailsText = el("p", "rt-details-text");
+      detailsText.textContent = course.description;
+      
+      const detailsExample = el("p", "rt-details-example");
+      detailsExample.innerHTML = `<strong>Ej:</strong> ${course.example}`;
+      
+      detailsSection.append(detailsText, detailsExample);
+      
+      // Toggle acordeón
+      detailsBtn.addEventListener("click", () => {
+        const isOpen = detailsSection.style.display !== "none";
+        detailsSection.style.display = isOpen ? "none" : "block";
+        detailsBtn.textContent = isOpen ? "Ver detalles" : "Ocultar detalles";
+        detailsBtn.classList.toggle("rt-details-btn-open", !isOpen);
       });
-      actions.append(label);
-      body.append(title, desc, actions);
-      card.append(img, body);
+      
+      body.append(detailsBtn, detailsSection);
+      card.append(titleContainer, imgContainer, body);
       track.append(card);
     });
 
-    // Navegación
-    const viewport = $(".rt-viewport");
-    $(".rt-prev").addEventListener("click", () => {
-      viewport.scrollBy({ left: -viewport.clientWidth, behavior: "smooth" });
+    // Navegación con flechas
+    setupCarouselNavigation();
+  }
+
+  function setupCarouselNavigation() {
+    const track = els.track;
+    const prevBtn = $(".rt-prev");
+    const nextBtn = $(".rt-next");
+    
+    let autoScrollInterval;
+    let currentIndex = 0;
+    
+    function getCardWidth() {
+      const firstCard = track.querySelector(".rt-card");
+      if (!firstCard) return 0;
+      const cardStyle = window.getComputedStyle(firstCard);
+      return firstCard.offsetWidth + parseFloat(cardStyle.marginRight || 0);
+    }
+    
+    function scrollToIndex(index) {
+      const cardWidth = getCardWidth();
+      const maxIndex = Math.max(0, coursesData.length - Math.floor(track.clientWidth / cardWidth));
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
+      track.scrollTo({
+        left: currentIndex * cardWidth,
+        behavior: "smooth"
+      });
+    }
+    
+    function scrollNext() {
+      const cardWidth = getCardWidth();
+      const maxIndex = Math.max(0, coursesData.length - Math.floor(track.clientWidth / cardWidth));
+      if (currentIndex >= maxIndex) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      scrollToIndex(currentIndex);
+    }
+    
+    function scrollPrev() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = Math.max(0, coursesData.length - Math.floor(track.clientWidth / getCardWidth()));
+      }
+      scrollToIndex(currentIndex);
+    }
+    
+    // Botones de navegación
+    prevBtn.addEventListener("click", () => {
+      scrollPrev();
+      resetAutoScroll();
     });
-    $(".rt-next").addEventListener("click", () => {
-      viewport.scrollBy({ left: viewport.clientWidth, behavior: "smooth" });
+    
+    nextBtn.addEventListener("click", () => {
+      scrollNext();
+      resetAutoScroll();
     });
+    
+    // Auto-scroll cada 5 segundos
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        scrollNext();
+      }, 2000);
+    }
+    
+    function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+    
+    // Pausar auto-scroll al hacer hover
+    track.addEventListener("mouseenter", () => {
+      clearInterval(autoScrollInterval);
+    });
+    
+    track.addEventListener("mouseleave", () => {
+      startAutoScroll();
+    });
+    
+    // Iniciar auto-scroll
+    startAutoScroll();
   }
 
   function spinToSegment(segIdx) {
@@ -273,12 +464,13 @@
     const email = sanitizeText(els.email.value);
     const company = sanitizeText(els.company.value);
     const phone = sanitizeText(els.phone.value);
+    const position = sanitizeText(els.position.value);
 
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
     const errors = [];
     if (!name) errors.push("Nombre es obligatorio");
     if (!email || !emailOk) errors.push("Correo inválido");
-    return { valid: errors.length === 0, errors, data: { name, email, company, phone } };
+    return { valid: errors.length === 0, errors, data: { name, email, company, phone, position } };
   }
 
   async function submitForm(ev) {
@@ -338,12 +530,15 @@
     els.summaryCourses = document.getElementById("rt-summary-courses");
     els.prizeInput = document.getElementById("rt-prize-input");
     els.coursesInput = document.getElementById("rt-courses-input");
+    els.prizeBoxDisplay = document.getElementById("rt-prize-box-display");
+    els.coursesBoxList = document.getElementById("rt-courses-box-list");
     els.track = document.getElementById("rt-track");
     els.form = document.getElementById("rt-form");
     els.name = document.getElementById("rt-name");
     els.email = document.getElementById("rt-email");
     els.company = document.getElementById("rt-company");
     els.phone = document.getElementById("rt-phone");
+    els.position = document.getElementById("rt-position");
     els.submit = document.getElementById("rt-submit");
     els.status = document.getElementById("rt-status");
     els.modal = document.getElementById("rt-modal");
