@@ -449,9 +449,63 @@
   }
 
   function showModal(prizeText) {
+    // premio
     els.modalPrize.textContent = prizeText;
+    // mes actual para la nota
+    const month = new Date().toLocaleString("es-ES", { month: "long" });
+    const monthSpan = document.getElementById("rt-modal-month");
+    if (monthSpan) monthSpan.textContent = month.charAt(0).toUpperCase() + month.slice(1);
+
+    // abrir modal
     els.modal.removeAttribute("hidden");
     els.modalClose.focus({ preventScroll: true });
+
+    // confeti sencillo en canvas del modal
+    const canvas = document.getElementById("rt-confetti");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let rafId;
+    const colors = ["#e73ce6", "#c6df31", "#ffffff", "#4b1fb4"];
+    const pieces = Array.from({ length: 120 }).map(() => ({
+      x: Math.random() * canvas.clientWidth,
+      y: -20 - Math.random() * 200,
+      r: 4 + Math.random() * 6,
+      c: colors[Math.floor(Math.random() * colors.length)],
+      vx: -1 + Math.random() * 2,
+      vy: 2 + Math.random() * 3,
+      rot: Math.random() * Math.PI,
+      vr: (-0.1 + Math.random() * 0.2)
+    }));
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    }
+    resize();
+
+    function tick() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        if (p.y - p.r > canvas.height) {
+          p.y = -20; p.x = Math.random() * canvas.width; p.vy = 2 + Math.random() * 3;
+        }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.c;
+        ctx.fillRect(-p.r, -p.r * 0.5, p.r * 2, p.r);
+        ctx.restore();
+      });
+      rafId = requestAnimationFrame(tick);
+    }
+    tick();
+
+    // detener confeti al cerrar modal
+    const stop = () => { if (rafId) cancelAnimationFrame(rafId); };
+    els.modalClose.addEventListener("click", stop, { once: true });
   }
 
   function closeModal() {
