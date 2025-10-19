@@ -1,17 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 :root {
   --rt-primary: #6d28d9; /* purple ring & hub */
   --rt-accent: #ff7a59;
@@ -40,8 +29,6 @@ html, body {
   display: grid;
   gap: 1rem;
   padding: 1rem;
-  max-width: 100%;
-  width: 100%;
 }
 
 @media (min-width: 900px) {
@@ -62,51 +49,19 @@ html, body {
   padding: 2rem 15rem;
 }
 
-@media (max-width: 1400px) {
-  .rt-hero {
-    padding: 2rem 5rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .rt-hero {
-    padding: 2rem 2rem;
-  }
-}
-
 @media (max-width: 768px) {
-  :root {
-    --rt-wheel-size: min(340px, calc(100vw - 3rem));
-  }
-  
   .rt-hero {
     grid-template-columns: 1fr;
     place-items: center;
-    padding: 1.5rem 1rem;
-    width: 100%;
-    max-width: 100vw;
+    padding: 1.5rem;
   }
   
   .rt-wheel-container {
     align-items: center;
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  .rt-wheel-wrap {
-    width: var(--rt-wheel-size);
-    height: var(--rt-wheel-size);
-    max-width: 100%;
   }
   
   .rt-prize-note {
     text-align: center;
-  }
-  
-  .rt-hero-text {
-    align-items: center;
-    text-align: center;
-    width: 100%;
   }
 }
 
@@ -726,25 +681,20 @@ html, body {
 .rt-app :focus-visible { outline: 3px solid #fde68a; outline-offset: 2px; }
 
 /* Responsivo */
-@media (max-width: 480px) {
-  :root { 
-    --rt-wheel-size: min(280px, calc(100vw - 2.5rem));
+@media (max-width: 768px) {
+  .rt-hero-text {
+    align-items: center;
+    text-align: center;
   }
-  
+}
+
+@media (max-width: 480px) {
+  :root { --rt-wheel-size: 320px; } /* Aumentado de 260px a 320px en mobile */
   .rt-hero-title {
     font-size: 1.35rem;
   }
   .rt-hero-title-cta {
     font-size: 1.2rem;
-  }
-  .rt-hero {
-    padding: 1rem 0.75rem;
-    max-width: 100vw;
-  }
-  
-  .rt-wheel-wrap {
-    width: var(--rt-wheel-size);
-    height: var(--rt-wheel-size);
   }
 }
 
