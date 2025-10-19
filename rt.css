@@ -63,6 +63,36 @@
   .rt-prize-note {
     text-align: center;
   }
+  
+  /* Ajustes carrusel para móvil: ocupar todo el ancho y evitar cortes */
+  .rt-carousel { grid-template-columns: 1fr; }
+  .rt-nav { display: none; }
+  .rt-viewport { width: 100%; }
+  .rt-track { padding: 0.25rem; }
+  .rt-card { flex: 0 0 calc(100vw - 2rem); max-width: 100%; }
+  .rt-card, .rt-card * { box-sizing: border-box; }
+  .rt-card-img-container, .rt-card-img-container img { max-width: 100%; width: 100%; }
+  
+  /* Reposicionar el puntero arriba para evitar overflow horizontal en móviles */
+  .rt-pointer {
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -100%);
+    border-top: 30px solid var(--rt-pointer);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 0;
+  }
+  .rt-pointer::after {
+    right: auto;
+    left: 50%;
+    top: 6px;
+    transform: translateX(-50%);
+    border-top: 20px solid var(--rt-primary);
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 0;
+  }
 }
 
 .rt-hero-text {
@@ -689,7 +719,8 @@
 }
 
 @media (max-width: 480px) {
-  :root { --rt-wheel-size: 320px; } /* Aumentado de 260px a 320px en mobile */
+  /* Ajustar tamaño de ruleta para caber dentro del viewport considerando padding */
+  :root { --rt-wheel-size: min(320px, calc(100vw - 3rem)); }
   .rt-hero-title {
     font-size: 1.35rem;
   }
