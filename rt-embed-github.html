@@ -1,0 +1,93 @@
+
+
+<!-- Cargar Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Cargar CSS desde GitHub via jsDelivr CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vskavo/teamclass-landing@1.2.0/rt.css">
+
+<script>
+  window.rtWebhookUrl = "https://n8n.dataotec.com/webhook/d49b5d18-39c9-4bde-b58a-d3313919b0f1";
+</script>
+
+<!-- HTML de la ruleta -->
+<div id="rt-app" class="rt-app" data-version="1.0.0">
+<section class="rt-hero">
+  <div class="rt-hero-text">
+    <h1 class="rt-hero-title">
+      <span class="rt-hero-title-main"><strong>La capacitación de tu</strong><br> <strong>equipo</strong> viene con <strong><i>beneficio.</i></strong></span><br>
+      <span class="rt-hero-title-cta">¡Gira y descúbrelo!</span>
+    </h1>
+    <button class="rt-spin-btn" type="button" aria-live="polite">Girar</button>
+  </div>
+  <div class="rt-wheel-container">
+    <div class="rt-wheel-wrap" aria-live="polite">
+      <div class="rt-pointer" aria-hidden="true"></div>
+      <div class="rt-wheel" role="img" aria-label="Ruleta de premios">
+        <div class="rt-wheel-labels" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="rt-prize-note">*Por compra de uno o más cursos</p>
+  </div>
+</section>
+
+<section class="rt-courses-header">
+  <h2 class="rt-courses-title">¿Qué capacitación necesita tu equipo?</h2>
+  <p class="rt-courses-subtitle">Selecciona la escuela que...</p>
+</section>
+
+<section class="rt-carousel" aria-label="Cursos disponibles">
+  <button type="button" class="rt-nav rt-prev" aria-label="Anterior">‹</button>
+  <div class="rt-viewport">
+    <div class="rt-track" id="rt-track"></div>
+  </div>
+  <button type="button" class="rt-nav rt-next" aria-label="Siguiente">›</button>
+</section>
+
+<section class="rt-form-section">
+  <div class="rt-form-left">
+    <h2 class="rt-form-section-title">Resumen de tu ruta formativa</h2>
+    <div class="rt-prize-box">
+      <p class="rt-prize-box-label">GRATIS PARA TU EMPRESA:</p>
+      <p class="rt-prize-box-value" id="rt-prize-box-display">—</p>
+    </div>
+    <div class="rt-courses-box">
+      <p class="rt-courses-box-title">Escuela</p>
+      <div class="rt-courses-box-list" id="rt-courses-box-list">
+        <p class="rt-courses-box-empty">No has seleccionado ningún curso</p>
+      </div>
+    </div>
+  </div>
+  <form class="rt-form" id="rt-form" novalidate>
+    <h2 class="rt-form-title">¡Estás a un paso!</h2>
+    <p class="rt-form-subtitle">Rellena el formulario para que te contemos como realizar tu ruta formativa a la medida</p>
+    
+    <div class="rt-form-grid">
+      <div class="rt-field"><label for="rt-name">Nombre*</label><input type="text" id="rt-name" name="name" placeholder="Tu nombre" required /></div>
+      <div class="rt-field"><label for="rt-email">Correo*</label><input type="email" id="rt-email" name="email" placeholder="tu@correo.com" required /></div>
+      <div class="rt-field"><label for="rt-phone">Teléfono</label><input type="tel" id="rt-phone" name="phone" placeholder="Tu teléfono" /></div>
+      <div class="rt-field"><label for="rt-company">Empresa</label><input type="text" id="rt-company" name="company" placeholder="Tu empresa" /></div>
+      <div class="rt-field"><label for="rt-position">Cargo</label><input type="text" id="rt-position" name="position" placeholder="Tu cargo" /></div>
+    </div>
+    <div class="rt-summary">
+      <div class="rt-summary-item"><span class="rt-summary-label">Premio:</span><span id="rt-summary-prize" class="rt-summary-value">—</span></div>
+      <div class="rt-summary-item"><span class="rt-summary-label">Cursos seleccionados:</span><div id="rt-summary-courses" class="rt-chips"></div></div>
+    </div>
+    <input type="hidden" id="rt-prize-input" name="prize" value="" />
+    <input type="hidden" id="rt-courses-input" name="courses" value="" />
+    <div class="rt-actions"><button id="rt-submit" type="submit" class="rt-submit">¡Hablemos!</button><div id="rt-status" class="rt-status" aria-live="polite"></div></div>
+  </form>
+</section>
+</div>
+
+<div class="rt-modal" id="rt-modal" aria-modal="true" role="dialog" hidden>
+  <div class="rt-modal-content">
+    <p class="rt-modal-title">¡Felicidades!</p>
+    <p class="rt-modal-body">Has ganado: <strong id="rt-modal-prize"></strong></p>
+    <button type="button" class="rt-modal-close" id="rt-modal-close" aria-label="Cerrar">Cerrar</button>
+  </div>
+</div>
+
+<!-- Cargar JavaScript desde GitHub via jsDelivr CDN -->
+<script src="https://cdn.jsdelivr.net/gh/vskavo/teamclass-landing@1.2.0/rt.js"></script>
