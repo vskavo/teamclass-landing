@@ -510,7 +510,12 @@
 
   function closeModal() {
     els.modal.setAttribute("hidden", "");
-    els.spinBtn.focus({ preventScroll: true });
+    
+    // Hacer scroll automático a la sección de cursos
+    const coursesHeader = document.querySelector(".rt-courses-header");
+    if (coursesHeader) {
+      coursesHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   function validateForm() {
