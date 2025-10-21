@@ -18,7 +18,7 @@
   --rt-seg-b: #c6df31; /* lime */
   --rt-seg-c: #ffffff; /* white */
   --rt-seg-text: #000000;
-  --rt-pointer: #f4d03f; /* yellow */
+  --rt-pointer: #c6df31; /* lime */
 }
 
 /* Layout base */
@@ -214,7 +214,7 @@
   top: 50%;
   left: 50%;
   transform-origin: center center;
-  width: 44%;
+  width: 40%;
   text-align: center;
   font-size: 10px;
   font-weight: 600;
