@@ -27,7 +27,7 @@
       name: "Responsabilidad Social, Diversidad e Inclusión", 
       image: "/wp-content/uploads/2025/10/Inclusion.jpg",
       description: "Promueve culturas organizacionales más justas, conscientes y sostenibles, con foco en la gestión responsable y la inclusión laboral.",
-      example: "Programas de capacitación inclusivo"
+      example: "Programas de capacitación inclusivo."
     },
     { 
       id: "c2", 
