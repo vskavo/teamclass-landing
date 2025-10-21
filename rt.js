@@ -558,6 +558,12 @@
 
       if (!res.ok) throw new Error(`Error ${res.status}`);
 
+      // Cambiar el botón a estado enviado
+      els.submit.textContent = "Datos enviados";
+      els.submit.style.background = "#FFFFFF";
+      els.submit.style.color = "#4b1fb4";
+      els.submit.disabled = true;
+      
       setStatus("Gracias, hemos recibido tus datos.", false, true);
       // Limpiar campos visibles (mantener premio)
       els.form.reset();
@@ -565,7 +571,6 @@
       updateCoursesSummary();
     } catch (err) {
       setStatus("No se pudo enviar. Intenta nuevamente.", true);
-    } finally {
       els.submit.disabled = false;
     }
   }
